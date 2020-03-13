@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.testng.annotations.Test;
 
@@ -15,23 +16,44 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class Tests extends BaseClass {
+public class Tests2 extends BaseClass {
 
 	@Test(priority = 0) //BooksFind Application
 	public void testOne() throws InterruptedException {
-
+        
+		//open BooksFind application and type "Wiki"in text field search
 		driver.findElement(By.xpath(
 				"//XCUIElementTypeApplication[@name=\"BooksFind\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField"))
 				.sendKeys("Wiki");
 		Thread.sleep(2000);
+		
+		//rotate device to landscape
+		driver.rotate(ScreenOrientation.LANDSCAPE);
+		
+		//click to disappear keyboard menu
+		MobileElement element = (MobileElement) driver.findElementByAccessibilityId("bg");
+		element.click();
+		Thread.sleep(1000);
+		
+		Map<String, Object> args2 = new HashMap<String, Object>();
+		args2.put("element", ((MobileElement) element).getId());
+		args2.put("x", 0);
+		args2.put("y", 54);
+		driver.executeScript("mobile: tap", args2);
+		element.click();
+		Thread.sleep(2000);
+		
+		//click button search
 		driver.findElement(By.id("icons8 search 24")).click();
 		Thread.sleep(2000);
-
+        
+		//swipe page up
 		Map<String, Object> args = new HashMap<String, Object>();
 		args.put("direction", "up");
 		driver.executeScript("mobile: swipe", args);
 		Thread.sleep(2000);
 		
+		//scroll page up till find name "Rod Collins
 		Map<String, Object> args1 = new HashMap<String, Object>();
 		args1.put("direction", "up");
 		args1.put("name", "Rod Collins");
@@ -48,18 +70,6 @@ public class Tests extends BaseClass {
 		
 //		driver.switchTo().frame("Book List");
 
-		MobileElement element = (MobileElement) driver.findElementByAccessibilityId("bg");
-		element.click();
-		Thread.sleep(1000);
-		
-		Map<String, Object> args2 = new HashMap<String, Object>();
-		args2.put("element", ((MobileElement) element).getId());
-		args2.put("x", 0);
-		args2.put("y", 54);
-		driver.executeScript("mobile: tap", args2);
-		element.click();
-		Thread.sleep(2000);
-		
 		MobileElement element1 = (MobileElement) driver.findElementByAccessibilityId("bg");
 		element1.click();
 		Thread.sleep(1000);
@@ -72,25 +82,6 @@ public class Tests extends BaseClass {
 		element1.click();
 		Thread.sleep(2000);
 		
-//		MobileElement element11 = (MobileElement) driver.findElementByAccessibilityId("bg");
-//		element11.click();
-//		Thread.sleep(1000);
-//		
-//		Map<String, Object> args211 = new HashMap<String, Object>();
-//		args211.put("element", ((MobileElement) element11).getId());
-//		args211.put("x", 58);
-//		args211.put("y", 464);
-//		driver.executeScript("mobile: tap", args211);
-//		element11.clear();
-//		Thread.sleep(10000);
-		
-		driver.findElement(By.xpath("//XCUIElementTypeApplication[@name=\"BooksFind\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField")).clear();
-		
-		driver.findElement(By.xpath("//XCUIElementTypeApplication[@name=\"BooksFind\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField")).sendKeys("Automation");
-		Thread.sleep(5000);
-		driver.findElement(By.id("icons8 search 24")).click();
-		Thread.sleep(2000);
-		
 		MobileElement element11 = (MobileElement) driver.findElementByAccessibilityId("bg");
 		element11.click();
 		Thread.sleep(1000);
@@ -101,6 +92,25 @@ public class Tests extends BaseClass {
 		args211.put("y", 54);
 		driver.executeScript("mobile: tap", args211);
 		element11.click();
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//XCUIElementTypeApplication[@name=\"BooksFind\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField")).clear();
+		
+		driver.findElement(By.xpath("//XCUIElementTypeApplication[@name=\"BooksFind\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField")).sendKeys("Automation");
+		Thread.sleep(5000);
+		driver.findElement(By.id("icons8 search 24")).click();
+		Thread.sleep(2000);
+		
+		MobileElement element111 = (MobileElement) driver.findElementByAccessibilityId("bg");
+		element111.click();
+		Thread.sleep(1000);
+		
+		Map<String, Object> args2111 = new HashMap<String, Object>();
+		args2111.put("element", ((MobileElement) element111).getId());
+		args2111.put("x", 0);
+		args2111.put("y", 54);
+		driver.executeScript("mobile: tap", args2111);
+		element111.click();
 		Thread.sleep(2000);
 		
 		driver.findElement(By.xpath("//XCUIElementTypeApplication[@name=\"BooksFind\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField")).clear();

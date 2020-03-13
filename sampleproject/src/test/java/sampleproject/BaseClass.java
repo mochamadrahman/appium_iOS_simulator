@@ -36,25 +36,10 @@ public class BaseClass {
 
 			// caps.setCapability(CapabilityType.BROWSER_NAME, "Safari");
 
-			// Real Device
-//			caps.setCapability("platformName", "IOS");
-//			caps.setCapability("platformVersion", "10.2");
-//			caps.setCapability("deviceName", "MTMD13");
-//			caps.setCapability("udid", "9a5e8c7c8a10e3c171396d1d6d999a4b23593a12");
-//			caps.setCapability("bundleId", "com.mrahmanh.A");
-//			caps.setCapability("bundleId", "com.WB.BooksFind");
-//			caps.setCapability("updateWDABundleId", "com.mrahmanh123.WebDriverAgentRunner");
-//			caps.setCapability("xcodeOrgId", "D7478R27YW");
-//			caps.setCapability("xcodeSigningId", "iPhone Developer");
-
 			URL url = new URL("http://127.0.0.1:4723/wd/hub");
 
 //			driver = new AppiumDriver<MobileElement>(url, caps);
 			driver = new IOSDriver<IOSElement>(url, caps);
-
-//			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//			caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "30");
-//			
 
 		} catch (Exception exp) {
 			System.out.println("Cause is : " + exp.getCause());
